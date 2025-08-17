@@ -21,6 +21,8 @@ import DashboardRedirect from "../Pages/Dashboard/DashboardRiderect/DashboardRid
 import AdminAddCoupon from "../Pages/Dashboard/AdminAddC0upon/AdminAddCoupon";
 import User from "../context/User/User";
 import AdminStatistics from "../Pages/Dashboard/AdminStatistics/AdminStatistics";
+import About from "../Pages/About/About";
+import Contact from "../Pages/contact-us/Contact";
 
 export const router = createBrowserRouter([
   {
@@ -33,13 +35,11 @@ export const router = createBrowserRouter([
       { path: "login", Component: LogIn },
       {
         path: "product-details/:id",
-        element: (
-          <PrivateRoute>
-            <ProductDetails></ProductDetails>
-          </PrivateRoute>
-        ),
+        element: <ProductDetails></ProductDetails>,
       },
       { path: "products", Component: Products },
+      { path: "about", Component: About },
+      { path: "contact", Component: Contact },
     ],
   },
   {

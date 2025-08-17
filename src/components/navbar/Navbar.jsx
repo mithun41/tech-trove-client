@@ -83,6 +83,30 @@ export default function Navbar() {
           Products
         </NavLink>
       </li>
+      <li>
+        <NavLink
+          to="/about"
+          className={({ isActive }) =>
+            isActive
+              ? "text-blue-600 dark:text-blue-400 font-semibold"
+              : "hover:text-blue-500 dark:hover:text-blue-400"
+          }
+        >
+          About
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/contact"
+          className={({ isActive }) =>
+            isActive
+              ? "text-blue-600 dark:text-blue-400 font-semibold"
+              : "hover:text-blue-500 dark:hover:text-blue-400"
+          }
+        >
+          Contact Us
+        </NavLink>
+      </li>
     </>
   );
 

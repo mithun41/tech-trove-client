@@ -20,8 +20,7 @@ const Login = () => {
 
   const onSubmit = (data) => {
     signIn(data.email, data.password)
-      .then((result) => {
-        console.log(result.user);
+      .then(() => {
         toast("Successfully Logged in");
         navigate(from);
       })
