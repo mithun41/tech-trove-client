@@ -11,9 +11,13 @@ export default function Newsletter() {
   };
 
   return (
-    <section className="relative py-20 px-6 md:px-12 bg-gradient-to-r from-[#03B7E8] via-[#03A0C8] to-[#0284B3] text-white overflow-hidden">
+    <section
+      className="relative py-20 px-6 md:px-12 
+      bg-gradient-to-r from-[#03B7E8] via-[#03A0C8] to-[#0284B3] text-white overflow-hidden
+      dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 dark:text-gray-100"
+    >
       {/* Background overlay pattern */}
-      <div className="absolute inset-0 opacity-15 bg-[url('https://www.toptal.com/designers/subtlepatterns/patterns/dots.png')]"></div>
+      <div className="absolute inset-0 opacity-15 bg-[url('https://www.toptal.com/designers/subtlepatterns/patterns/dots.png')] dark:opacity-10"></div>
 
       <div className="relative max-w-5xl mx-auto text-center">
         {/* Title */}
@@ -31,7 +35,7 @@ export default function Newsletter() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-lg md:text-xl text-gray-100 max-w-2xl mx-auto mb-10"
+          className="text-lg md:text-xl text-gray-100 dark:text-gray-300 max-w-2xl mx-auto mb-10"
         >
           Subscribe to our newsletter and never miss out on trending tech tools,
           product launches, and exclusive insights.
@@ -51,9 +55,13 @@ export default function Newsletter() {
               name="email"
               placeholder="Enter your email"
               required
-              className="w-full px-6 py-4 rounded-full text-gray-900 bg-white/90 shadow-lg border-2 border-transparent focus:outline-none focus:ring-4 focus:ring-[#E7AD01] focus:border-[#E7AD01] transition"
+              className="w-full px-6 py-4 rounded-full 
+              text-gray-900 bg-white/90 
+              shadow-lg border-2 border-transparent 
+              focus:outline-none focus:ring-4 focus:ring-[#E7AD01] focus:border-[#E7AD01] transition
+              dark:bg-gray-800 dark:text-gray-100 dark:placeholder-gray-400 dark:focus:ring-[#E7AD01]"
             />
-            <span className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400">
+            <span className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 dark:text-gray-500">
               <MdOutlineMailOutline size={25} />
             </span>
           </div>
@@ -62,14 +70,16 @@ export default function Newsletter() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             type="submit"
-            className="w-full md:w-auto px-8 py-4 rounded-full bg-[#E7AD01] text-gray-900 font-semibold shadow-lg hover:bg-[#f3bc28] transition"
+            className="w-full md:w-auto px-8 py-4 rounded-full 
+            bg-[#E7AD01] text-gray-900 font-semibold shadow-lg hover:bg-[#f3bc28] transition
+            dark:bg-[#f3bc28] dark:text-gray-900"
           >
             Subscribe
           </motion.button>
         </motion.form>
 
         {/* Bottom text */}
-        <p className=" text-gray-200 mt-6">
+        <p className="text-gray-200 dark:text-gray-400 mt-6">
           🔒 We respect your privacy. Unsubscribe anytime.
         </p>
       </div>

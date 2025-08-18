@@ -16,7 +16,7 @@ function useDebounce(value, delay) {
   return debouncedValue;
 }
 
-const PRODUCTS_PER_PAGE = 6;
+const PRODUCTS_PER_PAGE = 8; // 4x2 grid
 
 const Products = () => {
   const axiosPublic = useAxiosPublic();
@@ -59,6 +59,7 @@ const Products = () => {
   const products = data?.products || [];
   const total = data?.total || 0;
   const totalPages = Math.ceil(total / PRODUCTS_PER_PAGE);
+
   const goToPage = (pageNum) => {
     if (pageNum >= 1 && pageNum <= totalPages) setPage(pageNum);
   };
@@ -91,7 +92,8 @@ const Products = () => {
         </p>
       ) : (
         <>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {/* Cards Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {products.map((product) => {
               const isOwner = user?.email === product.ownerEmail;
               const hasVoted = product.voters?.includes(user?.email);
@@ -99,55 +101,63 @@ const Products = () => {
               return (
                 <div
                   key={product._id}
-                  className="rounded-xl shadow-md border dark:border-gray-700 p-5 bg-white dark:bg-gray-800 space-y-3 hover:shadow-lg transition"
+                  className="group bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-2xl overflow-hidden transition-transform duration-300 hover:-translate-y-2"
                 >
-                  <div className="w-28 h-28 mx-auto">
+                  {/* Image */}
+                  <div className="h-48 overflow-hidden">
                     <img
                       src={product.image}
                       alt={product.name}
-                      className="w-full h-full object-cover rounded-full border shadow dark:border-gray-600"
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                     />
                   </div>
 
-                  <h3
-                    className="text-lg font-bold text-center text-blue-700 dark:text-blue-400 hover:underline cursor-pointer"
-                    onClick={() => navigate(`/product-details/${product._id}`)}
-                  >
-                    {product.name}
-                  </h3>
-
-                  <p className="text-center text-sm text-gray-500 dark:text-gray-400">
-                    by <span className="font-medium">{product.ownerName}</span>
-                  </p>
-
-                  <p className="text-sm text-gray-600 dark:text-gray-300 line-clamp-3 text-center">
-                    {product.description}
-                  </p>
-
-                  <div className="flex flex-wrap justify-center gap-1 my-2">
-                    {product.tags?.map((tag, idx) => (
-                      <span
-                        key={idx}
-                        className="badge badge-outline text-sm dark:border-gray-500 dark:text-gray-300"
-                      >
-                        #{tag}
-                      </span>
-                    ))}
-                  </div>
-
-                  <div className="text-center">
-                    <button
-                      onClick={() => handleUpvote(product)}
-                      disabled={isOwner || hasVoted}
-                      className={`mt-2 flex items-center justify-center gap-2 mx-auto px-4 py-2 rounded-md text-white font-medium transition ${
-                        isOwner || hasVoted
-                          ? "bg-gray-400 cursor-not-allowed"
-                          : "bg-pink-600 hover:bg-pink-700"
-                      }`}
+                  {/* Info */}
+                  <div className="p-5 space-y-3">
+                    <h3
+                      className="text-lg font-bold text-gray-800 dark:text-white text-center hover:text-blue-600 dark:hover:text-blue-400 cursor-pointer"
+                      onClick={() =>
+                        navigate(`/product-details/${product._id}`)
+                      }
                     >
-                      <FaHeart />
-                      {product.votes || 0} Upvotes
-                    </button>
+                      {product.name}
+                    </h3>
+                    <p className="text-center text-gray-500 dark:text-gray-300 text-sm">
+                      by{" "}
+                      <span className="font-medium">{product.ownerName}</span>
+                    </p>
+
+                    <p className="text-gray-600 dark:text-gray-200 text-sm text-center line-clamp-2">
+                      {product.description}
+                    </p>
+
+                    {/* Tags */}
+                    <div className="flex flex-wrap justify-center gap-2 mt-2">
+                      {product.tags?.map((tag, idx) => (
+                        <span
+                          key={idx}
+                          className="text-xs px-3 py-1 rounded-full bg-blue-50 dark:bg-blue-900 text-blue-600 dark:text-blue-300 font-medium"
+                        >
+                          #{tag}
+                        </span>
+                      ))}
+                    </div>
+
+                    {/* Upvote Button */}
+                    <div className="mt-4 flex justify-center">
+                      <button
+                        onClick={() => handleUpvote(product)}
+                        disabled={isOwner || hasVoted}
+                        className={`flex items-center gap-2 px-4 py-2 rounded-full font-semibold text-white transition ${
+                          isOwner || hasVoted
+                            ? "bg-gray-400 cursor-not-allowed"
+                            : "bg-gradient-to-r from-pink-500 to-pink-600 hover:from-pink-600 hover:to-pink-700 shadow-md hover:shadow-lg"
+                        }`}
+                      >
+                        <FaHeart />
+                        {product.votes || 0} Upvotes
+                      </button>
+                    </div>
                   </div>
                 </div>
               );

@@ -54,47 +54,53 @@ const TestimonialsSlider = () => {
   };
 
   return (
-    <section className="bg-gray-50 py-16 px-4 max-w-7xl mx-auto ">
-      <div className=" text-center mb-12">
-        <h2 className="text-3xl font-bold text-gray-800">What Our Users Say</h2>
-        <p className="mt-4 text-gray-600">
-          Real reviews from our happy tech enthusiasts
-        </p>
-      </div>
+    <section className="bg-gray-50 dark:bg-gray-950 py-16 px-4 ">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-bold text-gray-800 dark:text-white">
+            What Our Users Say
+          </h2>
+          <p className="mt-4 text-gray-600 dark:text-gray-400">
+            Real reviews from our happy tech enthusiasts
+          </p>
+        </div>
 
-      <Slider {...settings}>
-        {reviews.map((review, idx) => (
-          <div key={idx} className="px-3">
-            <div className="bg-white p-6 rounded-2xl shadow-md hover:shadow-lg transition-shadow duration-300 h-full">
-              <div className="flex items-center mb-4">
-                <img
-                  src={review.photo}
-                  alt={review.name}
-                  className="w-14 h-14 rounded-full mr-4"
-                />
-                <div>
-                  <h3 className="text-lg font-semibold text-gray-800">
-                    {review.name}
-                  </h3>
-                  <div className="flex mt-1">
-                    {[...Array(5)].map((_, i) => (
-                      <FaStar
-                        key={i}
-                        className={`h-4 w-4 ${
-                          i < review.rating
-                            ? "text-yellow-400"
-                            : "text-gray-300"
-                        }`}
-                      />
-                    ))}
+        <Slider {...settings}>
+          {reviews.map((review, idx) => (
+            <div key={idx} className="px-3">
+              <div className="bg-white dark:bg-gray-900 p-6 rounded-2xl shadow-md hover:shadow-lg transition-shadow duration-300 h-full border border-gray-200 dark:border-gray-700">
+                <div className="flex items-center mb-4">
+                  <img
+                    src={review.photo}
+                    alt={review.name}
+                    className="w-14 h-14 rounded-full mr-4 border border-gray-200 dark:border-gray-600"
+                  />
+                  <div>
+                    <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-100">
+                      {review.name}
+                    </h3>
+                    <div className="flex mt-1">
+                      {[...Array(5)].map((_, i) => (
+                        <FaStar
+                          key={i}
+                          className={`h-4 w-4 ${
+                            i < review.rating
+                              ? "text-yellow-400"
+                              : "text-gray-300 dark:text-gray-600"
+                          }`}
+                        />
+                      ))}
+                    </div>
                   </div>
                 </div>
+                <p className="text-gray-600 dark:text-gray-300">
+                  {review.feedback}
+                </p>
               </div>
-              <p className="text-gray-600">{review.feedback}</p>
             </div>
-          </div>
-        ))}
-      </Slider>
+          ))}
+        </Slider>
+      </div>
     </section>
   );
 };

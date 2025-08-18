@@ -3,17 +3,17 @@ import { FaBolt, FaUsers, FaStar } from "react-icons/fa";
 
 const features = [
   {
-    icon: <FaBolt size={28} className="text-indigo-600" />,
+    icon: <FaBolt size={28} className="text-indigo-600 dark:text-indigo-400" />,
     title: "Fast & Easy Access",
     desc: "Explore trending AI apps, tools, and software with a few clicks.",
   },
   {
-    icon: <FaUsers size={28} className="text-green-600" />,
+    icon: <FaUsers size={28} className="text-green-600 dark:text-green-400" />,
     title: "Community Driven",
     desc: "Products are ranked by real user votes and engagement.",
   },
   {
-    icon: <FaStar size={28} className="text-yellow-500" />,
+    icon: <FaStar size={28} className="text-yellow-500 dark:text-yellow-400" />,
     title: "Top Quality Tools",
     desc: "Handpicked and reviewed tech products to boost your workflow.",
   },
@@ -21,13 +21,14 @@ const features = [
 
 export default function WhyChooseUs() {
   return (
-    <section className="py-16 bg-base-100">
+    <section className="py-16 bg-base-100 dark:bg-gray-950">
       <div className="max-w-7xl mx-auto px-4 ">
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold dark:text-white text-[#E7AD01] mb-2">
-            Why Choose <span className="text-primary">TechTrove?</span>
+          <h2 className="text-4xl font-bold mb-2 text-[#E7AD01] dark:text-[#facc15]">
+            Why Choose{" "}
+            <span className="text-primary dark:text-blue-400">TechTrove?</span>
           </h2>
-          <p className="text-gray-500 dark:text-white">
+          <p className="text-gray-500 dark:text-gray-300">
             Discover what makes us the go-to hub for modern tech tools.
           </p>
         </div>
@@ -40,13 +41,16 @@ export default function WhyChooseUs() {
               whileInView={{ opacity: 1, y: 0 }}
               initial={{ opacity: 0, y: 40 }}
               transition={{ duration: 0.5, delay: index * 0.2 }}
-              className="bg-white shadow-md rounded-lg p-6 border border-gray-200 text-center"
+              className="bg-white shadow-md rounded-lg p-6 border border-gray-200 text-center
+                         dark:bg-gray-900 dark:border-gray-700"
             >
               <div className="mb-4 flex justify-center">{item.icon}</div>
-              <h3 className="text-xl font-semibold mb-2 text-gray-800">
+              <h3 className="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-100">
                 {item.title}
               </h3>
-              <p className="text-gray-600 text-sm">{item.desc}</p>
+              <p className="text-gray-600 dark:text-gray-400 text-sm">
+                {item.desc}
+              </p>
             </motion.div>
           ))}
         </div>

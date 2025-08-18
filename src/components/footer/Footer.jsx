@@ -5,40 +5,59 @@ import { NavLink } from "react-router";
 
 const Footer = () => {
   return (
-    <footer className="px-4 divide-y bg-gray-200 dark:bg-gray-500 dark:text-white">
+    <footer className="px-4 divide-y bg-gray-200 dark:bg-gray-900 dark:text-gray-300">
       <div className="container flex flex-col justify-between py-10 mx-auto space-y-8 lg:flex-row lg:space-y-0">
         <div className="lg:w-1/3">
-          <Logo></Logo>
+          <Logo />
         </div>
         <div className="grid grid-cols-2 text-sm gap-x-3 gap-y-8 lg:w-2/3 sm:grid-cols-4">
+          {/* Quick Links */}
           <div className="space-y-3">
-            <h3 className="tracking-wide uppercase dark:text-white">
+            <h3 className="tracking-wide uppercase font-semibold dark:text-gray-200">
               Quick Links
             </h3>
             <ul className="space-y-1">
               <li>
-                <NavLink to="/">Home</NavLink>
+                <NavLink
+                  to="/"
+                  className="hover:text-blue-600 dark:hover:text-blue-400"
+                >
+                  Home
+                </NavLink>
               </li>
               <li>
-                <NavLink to="/products">Products</NavLink>
+                <NavLink
+                  to="/products"
+                  className="hover:text-blue-600 dark:hover:text-blue-400"
+                >
+                  Products
+                </NavLink>
               </li>
             </ul>
           </div>
 
+          {/* Developers */}
           <div className="space-y-3">
-            <h3 className="uppercase dark:text-white">Developers</h3>
+            <h3 className="uppercase font-semibold dark:text-gray-200">
+              Developers
+            </h3>
             <ul className="space-y-1">
               <li>Mahmudul Hasan Mithun</li>
             </ul>
           </div>
+
+          {/* Social Media */}
           <div className="space-y-3">
-            <div className="uppercase dark:text-white">Social media</div>
-            <div className="flex justify-start space-x-3">
+            <div className="uppercase font-semibold dark:text-gray-200">
+              Social media
+            </div>
+            <div className="flex justify-start space-x-4">
+              {/* Facebook */}
               <a
                 rel="noopener noreferrer"
                 href="https://www.facebook.com/mithun8441"
                 title="Facebook"
-                className="flex items-center p-1"
+                className="flex items-center p-1 hover:text-blue-600 dark:hover:text-yellow-400"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -49,14 +68,22 @@ const Footer = () => {
                   <path d="M32 16c0-8.839-7.167-16-16-16-8.839 0-16 7.161-16 16 0 7.984 5.849 14.604 13.5 15.803v-11.177h-4.063v-4.625h4.063v-3.527c0-4.009 2.385-6.223 6.041-6.223 1.751 0 3.584 0.312 3.584 0.312v3.937h-2.021c-1.984 0-2.604 1.235-2.604 2.5v3h4.437l-0.713 4.625h-3.724v11.177c7.645-1.199 13.5-7.819 13.5-15.803z"></path>
                 </svg>
               </a>
-              <a href="https://www.linkedin.com/in/mahmudul41/" target="_blank">
+
+              {/* LinkedIn */}
+              <a
+                href="https://www.linkedin.com/in/mahmudul41/"
+                target="_blank"
+                className="hover:text-blue-600 dark:hover:text-yellow-400"
+              >
                 <FaLinkedin size={25} />
               </a>
+
+              {/* Instagram */}
               <a
                 rel="noopener noreferrer"
                 href="https://www.instagram.com/me___mithun/"
                 title="Instagram"
-                className="flex items-center p-1"
+                className="flex items-center p-1 hover:text-pink-500 dark:hover:text-yellow-400"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -71,8 +98,10 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="py-6 text-sm text-center dark:text-white">
-        © 2025 Tech Trove rights reserved.
+
+      {/* Bottom Note */}
+      <div className="py-6 text-sm text-center text-gray-600 dark:text-gray-400">
+        © 2025 Tech Trove. All rights reserved.
       </div>
     </footer>
   );
